@@ -11,7 +11,7 @@ exports.config = {
                 folder: './md'
             }
         },
-        'search/:categories': {
+        '/search/:categories': {
             type: 'ignored'
         }
     }
