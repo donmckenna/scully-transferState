@@ -1,28 +1,27 @@
-- `npm run scully` and navigate to any `routerLink` route at the top of the page.
-- In the console, I get the error: `ERROR TypeError: Cannot read property 'transferStateTest' of null`
+- `npm run scully`
+---
+- Refresh page on route `/`
+- The `TransferStateService` template area should show the correct routes.
+- Now navigate to a link with search params `/search/something`
+- The `TransferStateService` template area should now only show `[ nothing found ]` with a `fetchTransferState` error in the console.
+---
+- Again, refresh page on route `/`
+- Navigate to `/search`
+- The `TransferStateService` template area should quickly flash `[ nothing found ]` before showing the correct routes.
+- Now navigate to a link with search params `/search/something`
+- The `TransferStateService` template area again only shows `[ nothing found ]` with a `fetchTransferState` error in the console.
+---
+- Now refresh the page on `/search/something`
+- The `TransferStateService` template area should show the correct routes.
+- Now navigate back to `/`
+- The `TransferStateService` template area should continue to show the correct routes.
+- Now navigate back to `/search/something`
+- The `TransferStateService` template area should still continue to show the correct routes.
+  - **NOTE:**  The `TransferStateService` template area does NOT flash `[ nothing found ]` anymore.
+---
 
-- The component which finds the error looks to be:
-  ```ts
-  export class PostListComponent implements OnInit {
+If this error came up with _every_ navigation to `/search/something`, it would make more sense to me, but it only comes up when the first route on a refresh is a "root" route. Otherwise it seems to work fine.
 
-    availablePosts$: Observable<ScullyRoute[]>;
-    transferStatePosts$: Observable<ScullyRoute[]>;
+So if route params is the issue, then what I find confusing is why it sometimes works at all here, and when it does, why it seems to function even smoother than refreshing on the root level routes.
 
-    constructor(
-      private scully: ScullyRoutesService,
-      private transferState: TransferStateService
-    ) {}
-
-    ngOnInit() {
-      this.availablePosts$ = this.scully.available$;
-      this.transferStatePosts$ = this.transferState.useScullyTransferState(
-        'transferStateTest',
-        this.availablePosts$
-      );
-    }
-
-  }
-  ```
-
-- All I'm doing is running `ScullyRoutesService.available$` through `TransferStateService.useScullyTransferState()`, and showing its `json` in the template.
-- It seems simple enough.. am I just implementing this incorrectly?
+I only see this issue when using `TransferStateService`
