@@ -1,5 +1,5 @@
 Live example:  
-https://5ecb485c3395f000068676e1--wizardly-johnson-148805.netlify.app/
+https://wizardly-johnson-148805.netlify.app
 
 ---
 - Refresh page on route `/`
