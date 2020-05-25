@@ -1,4 +1,6 @@
-- `npm run scully`
+Live example:  
+https://5ecb485c3395f000068676e1--wizardly-johnson-148805.netlify.app/
+
 ---
 - Refresh page on route `/`
 - The `TransferStateService` template area should show the correct routes.
