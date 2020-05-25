@@ -9,6 +9,9 @@ export const config: ScullyConfig = {
       id: {
         folder: './md'
       }
+    },
+    'search/:categories': {
+      type: 'ignored'
     }
   }
 };

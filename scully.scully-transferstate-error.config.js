@@ -10,6 +10,9 @@ exports.config = {
             id: {
                 folder: './md'
             }
+        },
+        'search/:categories': {
+            type: 'ignored'
         }
     }
 };
