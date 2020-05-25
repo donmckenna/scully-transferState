@@ -12,6 +12,9 @@ import { Component } from '@angular/core';
       <li><a routerLink="/search">/search</a></li>
       <li><a [routerLink]="['/']">['/']</a></li>
       <li><a [routerLink]="['/search']">['/search']</a></li>
+      <li><a [routerLink]="['/search/something']">['/search/something']</a></li>
+      <li><a [routerLink]="['search', 'something']">['search', 'something']</a></li>
+      <li><a [routerLink]="['search', 'somethingelse']">['search', 'somethingelse']</a></li>
     </ul>
   `,
 })
